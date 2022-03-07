@@ -80,4 +80,12 @@ header .logo {
   transform: translate(-50%, -50%);
 }
 
+main.index table {
+  width: 100%;
+}
+main.index table thead tr th {
+  padding-left: 10px;
+  text-align: left;
+}
+
 /*# sourceMappingURL=styles.css.map */

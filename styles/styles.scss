@@ -80,3 +80,23 @@ header {
         transform: translate(-50%,-50%);
     }
 }
+main.index {
+    table {
+        width: 100%;
+        thead {
+            tr {
+                th {
+                    padding-left: 10px;
+                    text-align: left;
+                }
+            }
+        }
+        tbody {
+            tr {
+                td {
+
+                }
+            }
+        }
+    }
+}
