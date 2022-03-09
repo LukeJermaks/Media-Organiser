@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 body, html {
     margin: 0;
+}
+* {
     color: #BBA5F0;
     font-family: Poppins;
 }
-
 body {
     background-color: #303030;
     &.menu-active {
@@ -16,6 +17,69 @@ input {
     color: #2D0A49;
     background-color: #ffffff;
 }
+@mixin afterStyles {
+    &:after{
+        width: 0;
+        height: 2px;
+        background-color: #5B1493;
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        transition: ease-in-out .2s;
+    }
+    &:hover {
+        &:after{
+            width: 100%;
+        }
+    }
+}
+
+.dropdown {
+    display: none;
+    p {
+        cursor: pointer;
+        position: relative;
+        width: 100%;
+        transition: ease-in-out .2s;
+        white-space: nowrap;
+        font-weight: 500;
+        &:hover {
+            color: #5B1493;
+        }
+    }
+}
+.active {
+    z-index: 10;
+    .dropdown {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: #ffffff;
+        padding: 5px 15px;
+        border-radius: 0 0 10px 10px;
+        transition: ease-in-out .2s;
+        &>*{
+            @include afterStyles;
+        }
+        p {
+            &>input {
+                padding: 5px 0;
+                font-size: 16px;
+                font-weight: 500;
+                color: #BBA5F0;
+                transition: ease-in-out .2s;
+                &:hover {
+                    color: #5B1493;
+                }
+            }
+        }
+    }
+}
+
+
 header {
     background-color: #2D0A49;
     height: 80px;
@@ -64,17 +128,18 @@ header {
             width: 40%;
             height: 100vh;
             display: block;
-            background-color: #5B1493;
+            background-color: #272727;
             .menu-items {
                 padding: 100px 50px;
                 margin: 0;
-
                 li {
                     list-style: none;
                     margin: 0;
                     height: 60px;
                     font-size: 40px;
                     cursor: pointer;
+                    position: relative;
+                    @include afterStyles;
                     a {
                         color: #BBA5F0;
                         text-decoration: none;
@@ -82,7 +147,12 @@ header {
                             color: #BBA5F0;
                             text-decoration: none;
                         }
+                        @include afterStyles;
                     }
+                    &:after {
+                        background-color: #731bb9;
+                    }
+
                 }
             }
         }
@@ -101,11 +171,12 @@ header {
     }
 }
 main.index {
-    section.subHeader {
+    section.sub-header {
         padding: 0 50px;
         height: 60px;
         background-color: #202020;
         display: flex;
+        z-index: 50;
         &>* {
             height: 100%;
             display: flex;
@@ -132,37 +203,72 @@ main.index {
                     transition: linear .2s;
                 }
             }
-            ul {
-                display: none;
-            }
-            &.active {
-                ul {
-                    position: absolute;
-                    display: block;
-                    background-color: white;
-                    top: 0;
-                    left: 0;
-                    transform: translateY(44px);
-                    padding: 5px;
-                    border-radius: 0 0 10px 10px;
-                    min-width: 200px;
-                    li {
-                        list-style: none;
-                    }
-                    form {
-                        margin: 0;
-                        input {
-                            font-weight: 500;
-                            font-size: 20px;
-                            letter-spacing: 1px;
-                        }
-                    }
-                }
+            form {
+                left: 0;
             }
         }
         .addNewBtn {
+            margin-left: auto;
+            color: #BBA5F0;
+            cursor: pointer;
+            position: relative;
+            .addnew>path, h3 {
+                transition: ease-in-out .2s;
+            }
             .addNew {
                 width: 32px;
+                path {
+                    fill:#BBA5F0;
+                    fill-opacity:1;
+                    fill-rule:evenodd
+                }
+            }
+            h3 {
+                font-weight: 500;
+                margin: 0 10px;
+            }
+
+            &:hover {
+                .addnew {
+                    path {
+                        fill: #5B1493;
+                    }
+                }
+                h3 {
+                    color: #5B1493;
+                }
+            }
+        }
+        &>* {
+            .dropdown {
+                display: none;
+                p {
+                    cursor: pointer;
+                    position: relative;
+                    width: 100%;
+                    transition: ease-in-out .2s;
+                    white-space: nowrap;
+                    font-weight: 500;
+                    &:hover {
+                        color: #5B1493;
+                    }
+                }
+            }
+            &.active {
+                .dropdown {
+                    display: flex;
+                    flex-direction: column;
+                    position: absolute;
+                    top: 100%;
+                    right: 0;
+                    background-color: #ffffff;
+                    padding: 5px 15px;
+                    border-radius: 0 0 10px 10px;
+                    transition: ease-in-out .2s;
+                    &>*{
+                        @include afterStyles;
+                    }
+                }
             }
         }
     }
@@ -178,13 +284,13 @@ main.index {
                         text-align: left;
                     }
                     &#t-image {
-                        width: 10%;
+                        width: 5%;
                     }
                     &#t-track {
                         width: 25%;
                     }
                     &#t-comment {
-                        width: 40%;
+                        width: 45%;
                     }
                     &#t-cat {
                         width: 15%;
@@ -202,7 +308,11 @@ main.index {
                     &.img, &.edit {
                         text-align: center;
                     }
+
+                    position: relative;
                     &.edit {
+                        position: relative;
+                        overflow: visible;
                         span {
                             width: 30px;
                             display: flex;
@@ -220,8 +330,9 @@ main.index {
                         form {
                             display: none;
                             transition: ease-in-out .2s;
-                            &.active {
-                                transform: translate(calc(-50% - 15px),-5%);
+                        }
+                        &.active {
+                            form {
                                 position: absolute;
                                 display: flex;
                                 flex-direction: column;
@@ -230,12 +341,14 @@ main.index {
                                 height: auto;
                                 border-radius: 10px;
                                 overflow: hidden;
-                                &>* {
+                                right: 30%;
+                                & > * {
                                     width: 100%;
                                     padding: 5px;
                                     cursor: pointer;
                                     margin: 2px 0;
                                     box-sizing: border-box;
+
                                     &:hover {
                                         background: #00000022;
                                     }

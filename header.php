@@ -15,13 +15,13 @@
         <section class="menu-container">
             <div class="menu">
                 <ul class="menu-items">
-                    <li class="menu-item"><a href="#">Songs</a></li>
-                    <li class="menu-item has-child-elements">
+                    <li class="list-item"><a href="index.php">Songs</a></li>
+                    <li class="list-item has-child-elements">
                         Playlists
                         <!--Add function to pull through lists of -->
                     </li>
-                    <li class="menu-item"><a href="#">Categories</a></li>
-                    <li class="menu-item"><a href="#">Manage Scope...</a></li>
+                    <li class="list-item"><a href="add-category.php">Categories</a></li>
+                    <li class="list-item"><a href="">Manage Scope...</a></li>
                 </ul>
             </div>
             <div class="overlay"></div>

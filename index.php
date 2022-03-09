@@ -93,10 +93,10 @@ function displayInTable($songs){ // used to output "songs" into a table, cell by
                             <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 500' shape-rendering='geometricPrecision' text-rendering='geometricPrecision'><ellipse rx='250' ry='250' transform='translate(250 250)' fill='#bba5f0' stroke-width='0'/></svg>
                             <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 500' shape-rendering='geometricPrecision' text-rendering='geometricPrecision'><ellipse rx='250' ry='250' transform='translate(250 250)' fill='#bba5f0' stroke-width='0'/></svg>
                         </span>
-                        <form action='temp.php' method='get'>
+                        <form action='temp.php' method='get' class='dropdown'>
                             <input type='submit' value='Edit Track' name='".$current."'>
                             <input type='submit' value='Delete Track' name='".$current."'>
-                            <span class='dropdown'>add playlist function here</span>    
+                            <span >add playlist function here</span>    
                         </form>
                     </td>";
             } else {
@@ -112,22 +112,27 @@ function displayInTable($songs){ // used to output "songs" into a table, cell by
 
 ?>
 <main class="index">
-    <section class="subHeader">
-        <div class="filter dropdown">
+    <section class="sub-header">
+        <div class="filter">
             <h2>Filter</h2>
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"><path d="M0,250L250,500L500,250" transform="matrix(.938862 0 0 0.938862 15.2845-102.07325)" fill="none" stroke="#bba5f0" stroke-width="50"/></svg>
-            <ul class="filter-list">
-                <form action="index.php" method="post">
-                    <li class="list-item"><input type="submit" value="Track Name (A-Z)" name="sort"></li>
-                    <li class="list-item"><input type="submit" value="Track Name (Z-A)" name="sort"></li>
-                    <li class="list-item"><input type="submit" value="Category (A-Z)" name="sort"></li>
-                    <li class="list-item"><input type="submit" value="Category (Z-A)" name="sort"></li>
-                </form>
-            </ul>
+            <form class="dropdown">
+                <p class="list-item"><input type="submit" value="Track Name (A-Z)" name="sort"></p>
+                <p class="list-item"><input type="submit" value="Track Name (Z-A)" name="sort"></p>
+                <p class="list-item"><input type="submit" value="Category (A-Z)" name="sort"></p>
+                <p class="list-item"><input type="submit" value="Category (Z-A)" name="sort"></p>
+            </form>
         </div>
         <div class="addNewBtn">
-            <img src="img/pbtn.png" alt="Plus Button" class="addNew">
+            <svg class="addNew" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <path xmlns="http://www.w3.org/2000/svg" d="M 256 0 A 256 256 0 0 0 0 256 A 256 256 0 0 0 256 512 A 256 256 0 0 0 512 256 A 256 256 0 0 0 256 0 z M 224 64 L 288 64 L 288 224 L 448 224 L 448 288 L 288 288 L 288 448 L 224 448 L 224 288 L 64 288 L 64 224 L 224 224 L 224 64 z "/>
+            </svg>
             <h3>Add New...</h3>
+            <div class="dropdown">
+                <p class="list-item new-track">Add New Track</p>
+                <p class="list-item new-playlist">Add New Playlist</p>
+                <p class="list-item new-category">Add New Category</p>
+            </div>
         </div>
     </section>
     <table>
@@ -147,7 +152,6 @@ function displayInTable($songs){ // used to output "songs" into a table, cell by
         </tbody>
 
     </table>
-
 
 </main>
 

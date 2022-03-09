@@ -15,12 +15,12 @@ function burgerMenu() {
 }
 
 function deactivate(arr) {
-    arr.forEach(button => button.querySelector("form").classList.remove("active"));
+    arr.forEach(button => button.classList.remove("active"));
 
 }
 
 function activate(e,arr) {
-    let form = e.querySelector("form");
+    let form = e;
     if (form.classList.contains("active") === true) {
         form.classList.remove("active")
     } else {
@@ -32,25 +32,29 @@ function activate(e,arr) {
 
 function registerEvents(){
     let editBtns = document.querySelectorAll(".edit")
-    editBtns.forEach(button => button.querySelector("span.btn").addEventListener('click', () => activate(button, editBtns)))
-    editBtns.forEach(button => button.addEventListener('mouseleave', () => button.querySelector("form").classList.remove("active")))
+    editBtns.forEach(button => button.addEventListener('click', () => activate(button, editBtns)))
+    editBtns.forEach(button => button.addEventListener('mouseleave', () => button.classList.remove("active")))
 
 }
 
-function dropdown() {
-    let dropdowns = document.querySelectorAll(".dropdown");
-    for (let i = 0; i < dropdowns.count; i++) {
-        dropdowns[i].addEventListener("click", () => dropdowns[i].classList.toggle("active"))
-        dropdowns[i].addEventListener("mouseleave", () => dropdowns[i].classList.remove("active"))
-    }
+function filter() {
+    let filter = document.querySelector(".filter");
+    filter.addEventListener("click", () => filter.classList.toggle("active"))
+    filter.addEventListener("mouseleave", () => filter.classList.remove("active"))
+}
+
+function addNewButton() {
+    let addNewButton = document.querySelector(".addNewBtn");
+    addNewButton.addEventListener("click", () => addNewButton.classList.toggle("active"))
+    addNewButton.addEventListener("mouseleave", () => addNewButton.classList.remove("active"))
 }
 
 
 function onLoad(){
     burgerMenu();
     registerEvents();
-    dropdown();
-
+    filter();
+    addNewButton();
 }
 
 
