@@ -6,7 +6,7 @@ $songs = [];
 if (($openedFile = fopen($fileName, "r")) !== FALSE) { // checks if the file is present to read
     $newline = "\n"; // used to signify new line in the csv
     $columnSeparator = ','; // what csv columns are seperated by
-    $data = file_get_contents($fileName); // contents of the file specifiec in "$fileName"
+    $data = file_get_contents($fileName); // contents of the file specified in "$fileName"
     $rows = explode($newline, $data); // creates an array of the rows
     foreach ($rows as $row) { // loops through rows per row
         $currentRow = []; // stores "$currentRow" as an array
@@ -94,9 +94,9 @@ function displayInTable($songs){ // used to output "songs" into a table, cell by
                             <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 500' shape-rendering='geometricPrecision' text-rendering='geometricPrecision'><ellipse rx='250' ry='250' transform='translate(250 250)' fill='#bba5f0' stroke-width='0'/></svg>
                         </span>
                         <form action='temp.php' method='get' class='dropdown'>
-                            <input type='submit' value='Edit Track' name='".$current."'>
-                            <input type='submit' value='Delete Track' name='".$current."'>
-                            <span >add playlist function here</span>    
+                            <p><input type='submit' value='Edit Track' name='".$current."'></p>
+                            <p><input type='submit' value='Delete Track' name='".$current."'></p>
+                            <p>add playlist function here</p>    
                         </form>
                     </td>";
             } else {
@@ -116,15 +116,15 @@ function displayInTable($songs){ // used to output "songs" into a table, cell by
         <div class="filter">
             <h2>Filter</h2>
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"><path d="M0,250L250,500L500,250" transform="matrix(.938862 0 0 0.938862 15.2845-102.07325)" fill="none" stroke="#bba5f0" stroke-width="50"/></svg>
-            <form class="dropdown">
+            <form class="dropdown" action="index.php" method="post">
                 <p class="list-item"><input type="submit" value="Track Name (A-Z)" name="sort"></p>
                 <p class="list-item"><input type="submit" value="Track Name (Z-A)" name="sort"></p>
                 <p class="list-item"><input type="submit" value="Category (A-Z)" name="sort"></p>
                 <p class="list-item"><input type="submit" value="Category (Z-A)" name="sort"></p>
             </form>
         </div>
-        <div class="addNewBtn">
-            <svg class="addNew" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <div class="add-new-btn">
+            <svg class="add-new" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                 <path xmlns="http://www.w3.org/2000/svg" d="M 256 0 A 256 256 0 0 0 0 256 A 256 256 0 0 0 256 512 A 256 256 0 0 0 512 256 A 256 256 0 0 0 256 0 z M 224 64 L 288 64 L 288 224 L 448 224 L 448 288 L 288 288 L 288 448 L 224 448 L 224 288 L 64 288 L 64 224 L 224 224 L 224 64 z "/>
             </svg>
             <h3>Add New...</h3>

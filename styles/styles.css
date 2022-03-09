@@ -1,4 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@keyframes drop-in {
+  from {
+    height: 0;
+  }
+  to {
+    height: fit-content;
+  }
+}
 body, html {
   margin: 0;
 }
@@ -19,6 +27,10 @@ input {
   border: none;
   color: #2D0A49;
   background-color: #ffffff;
+  cursor: pointer;
+}
+input:hover {
+  cursor: pointer;
 }
 
 .dropdown {
@@ -40,6 +52,7 @@ input {
   z-index: 10;
 }
 .active .dropdown {
+  height: auto;
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -48,7 +61,9 @@ input {
   background-color: #ffffff;
   padding: 5px 15px;
   border-radius: 0 0 10px 10px;
-  transition: ease-in-out 0.2s;
+}
+.active .dropdown > * {
+  position: relative;
 }
 .active .dropdown > *:after {
   width: 0;
@@ -79,7 +94,7 @@ header {
   height: 80px;
   position: relative;
   display: flex;
-  z-index: 10;
+  z-index: 100;
 }
 header > * {
   position: absolute;
@@ -136,6 +151,7 @@ header .menu-container .menu .menu-items li {
   font-size: 40px;
   cursor: pointer;
   position: relative;
+  position: relative;
 }
 header .menu-container .menu .menu-items li:after {
   width: 0;
@@ -153,6 +169,7 @@ header .menu-container .menu .menu-items li:hover:after {
 header .menu-container .menu .menu-items li a {
   color: #BBA5F0;
   text-decoration: none;
+  position: relative;
 }
 header .menu-container .menu .menu-items li a:visited, header .menu-container .menu .menu-items li a:focus {
   color: #BBA5F0;
@@ -202,7 +219,7 @@ main.index section.sub-header > * {
 main.index section.sub-header .filter {
   width: 200px;
   position: relative;
-  z-index: 0;
+  z-index: 10;
 }
 main.index section.sub-header .filter h2 {
   margin: 0;
@@ -218,41 +235,42 @@ main.index section.sub-header .filter:hover {
   cursor: pointer;
 }
 main.index section.sub-header .filter:hover h2, main.index section.sub-header .filter:hover path {
-  opacity: 0.6;
-  transition: linear 0.2s;
+  stroke: #5B1493;
+  color: #5B1493;
 }
 main.index section.sub-header .filter form {
   left: 0;
 }
-main.index section.sub-header .addNewBtn {
+main.index section.sub-header .add-new-btn {
   margin-left: auto;
   color: #BBA5F0;
   cursor: pointer;
   position: relative;
 }
-main.index section.sub-header .addNewBtn .addnew > path, main.index section.sub-header .addNewBtn h3 {
+main.index section.sub-header .add-new-btn .add-new > path, main.index section.sub-header .add-new-btn h3 {
   transition: ease-in-out 0.2s;
 }
-main.index section.sub-header .addNewBtn .addNew {
+main.index section.sub-header .add-new-btn .add-new {
   width: 32px;
 }
-main.index section.sub-header .addNewBtn .addNew path {
+main.index section.sub-header .add-new-btn .add-new path {
   fill: #BBA5F0;
   fill-opacity: 1;
   fill-rule: evenodd;
 }
-main.index section.sub-header .addNewBtn h3 {
+main.index section.sub-header .add-new-btn h3 {
   font-weight: 500;
   margin: 0 10px;
 }
-main.index section.sub-header .addNewBtn:hover .addnew path {
-  fill: #5B1493;
-}
-main.index section.sub-header .addNewBtn:hover h3 {
+main.index section.sub-header .add-new-btn:hover h3 {
   color: #5B1493;
+}
+main.index section.sub-header .add-new-btn:hover .add-new path {
+  fill: #5B1493;
 }
 main.index section.sub-header > * .dropdown {
   display: none;
+  z-index: 50;
 }
 main.index section.sub-header > * .dropdown p {
   cursor: pointer;
@@ -275,6 +293,9 @@ main.index section.sub-header > *.active .dropdown {
   padding: 5px 15px;
   border-radius: 0 0 10px 10px;
   transition: ease-in-out 0.2s;
+}
+main.index section.sub-header > *.active .dropdown > * {
+  position: relative;
 }
 main.index section.sub-header > *.active .dropdown > *:after {
   width: 0;
@@ -315,6 +336,9 @@ main.index table thead tr th#t-cat {
 main.index table thead tr th#t-edit {
   width: 10%;
 }
+main.index table tbody tr:hover {
+  background-color: #00000045;
+}
 main.index table tbody tr td {
   padding-left: 10px;
   position: relative;
@@ -324,6 +348,7 @@ main.index table tbody tr td.img, main.index table tbody tr td.edit {
 }
 main.index table tbody tr td.edit {
   position: relative;
+  z-index: 0;
   overflow: visible;
 }
 main.index table tbody tr td.edit span {
@@ -333,6 +358,7 @@ main.index table tbody tr td.edit span {
   justify-content: space-between;
   padding: 7px 5px;
   margin: auto;
+  z-index: 1;
 }
 main.index table tbody tr td.edit span svg {
   width: 25%;
@@ -340,30 +366,25 @@ main.index table tbody tr td.edit span svg {
 main.index table tbody tr td.edit span:hover {
   cursor: pointer;
 }
-main.index table tbody tr td.edit form {
-  display: none;
-  transition: ease-in-out 0.2s;
+main.index table tbody tr td.edit.active {
+  z-index: 100;
 }
 main.index table tbody tr td.edit.active form {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  background-color: #ffffff;
-  width: 200px;
-  height: auto;
+  right: 40%;
   border-radius: 10px;
-  overflow: hidden;
-  right: 30%;
+  top: calc(100% - 5px);
 }
-main.index table tbody tr td.edit.active form > * {
-  width: 100%;
-  padding: 5px;
-  cursor: pointer;
-  margin: 2px 0;
+main.index table tbody tr td.edit.active form p {
+  margin: 0;
+  margin-bottom: 5px;
   box-sizing: border-box;
+  padding: 5px 10px;
 }
-main.index table tbody tr td.edit.active form > *:hover {
-  background: #00000022;
+main.index table tbody tr td.edit.active form p input {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
 }
 main.index table tr {
   border-bottom: solid 1px #BBA5F0;

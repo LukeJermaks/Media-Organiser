@@ -44,7 +44,7 @@ function filter() {
 }
 
 function addNewButton() {
-    let addNewButton = document.querySelector(".addNewBtn");
+    let addNewButton = document.querySelector(".add-new-btn");
     addNewButton.addEventListener("click", () => addNewButton.classList.toggle("active"))
     addNewButton.addEventListener("mouseleave", () => addNewButton.classList.remove("active"))
 }
