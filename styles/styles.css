@@ -1,0 +1,401 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@keyframes drop-in {
+  from {
+    height: 0;
+  }
+  to {
+    height: fit-content;
+  }
+}
+body, html {
+  margin: 0;
+}
+
+* {
+  color: #BBA5F0;
+  font-family: Poppins;
+}
+
+body {
+  background-color: #303030;
+}
+body.menu-active {
+  overflow: hidden;
+}
+
+input {
+  border: none;
+  color: #2D0A49;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+input:hover {
+  cursor: pointer;
+}
+
+.dropdown {
+  display: none;
+}
+.dropdown p {
+  cursor: pointer;
+  position: relative;
+  width: 100%;
+  transition: ease-in-out 0.2s;
+  white-space: nowrap;
+  font-weight: 500;
+}
+.dropdown p:hover {
+  color: #5B1493;
+}
+
+.active {
+  z-index: 10;
+}
+.active .dropdown {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #ffffff;
+  padding: 5px 15px;
+  border-radius: 0 0 10px 10px;
+}
+.active .dropdown > * {
+  position: relative;
+}
+.active .dropdown > *:after {
+  width: 0;
+  height: 2px;
+  background-color: #5B1493;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transition: ease-in-out 0.2s;
+}
+.active .dropdown > *:hover:after {
+  width: 100%;
+}
+.active .dropdown p > input {
+  padding: 5px 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #BBA5F0;
+  transition: ease-in-out 0.2s;
+}
+.active .dropdown p > input:hover {
+  color: #5B1493;
+}
+
+header {
+  background-color: #2D0A49;
+  height: 80px;
+  position: relative;
+  display: flex;
+  z-index: 100;
+}
+header > * {
+  position: absolute;
+}
+header .b-menu {
+  position: absolute;
+  z-index: 100;
+  height: 30px;
+  width: 40px;
+  left: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+header .b-menu-line {
+  height: 4px;
+  width: 40px;
+  content: "";
+  background-color: #BBA5F0;
+  display: block;
+  border-radius: 1000px;
+  transition: ease-in-out 0.2s;
+}
+header .b-menu-line:not(:last-of-type) {
+  margin-bottom: 9px;
+}
+header .b-menu:hover {
+  cursor: pointer;
+}
+header .b-menu:hover > * {
+  opacity: 0.8;
+}
+header .menu-container {
+  width: 100%;
+  position: absolute;
+  display: flex;
+  transition: ease-in-out 0.3s;
+  left: -100%;
+}
+header .menu-container .menu {
+  position: relative;
+  width: 40%;
+  height: 100vh;
+  display: block;
+  background-color: #272727;
+}
+header .menu-container .menu .menu-items {
+  padding: 100px 50px;
+  margin: 0;
+}
+header .menu-container .menu .menu-items li {
+  list-style: none;
+  margin: 0;
+  height: 60px;
+  font-size: 40px;
+  cursor: pointer;
+  position: relative;
+  position: relative;
+}
+header .menu-container .menu .menu-items li:after {
+  width: 0;
+  height: 2px;
+  background-color: #5B1493;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transition: ease-in-out 0.2s;
+}
+header .menu-container .menu .menu-items li:hover:after {
+  width: 100%;
+}
+header .menu-container .menu .menu-items li a {
+  color: #BBA5F0;
+  text-decoration: none;
+  position: relative;
+}
+header .menu-container .menu .menu-items li a:visited, header .menu-container .menu .menu-items li a:focus {
+  color: #BBA5F0;
+  text-decoration: none;
+}
+header .menu-container .menu .menu-items li a:after {
+  width: 0;
+  height: 2px;
+  background-color: #5B1493;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transition: ease-in-out 0.2s;
+}
+header .menu-container .menu .menu-items li a:hover:after {
+  width: 100%;
+}
+header .menu-container .menu .menu-items li:after {
+  background-color: #731bb9;
+}
+header .menu-container .overlay {
+  width: 60%;
+}
+header .menu-container.active {
+  left: 0;
+  width: 100%;
+}
+header .logo {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+main.index section.sub-header {
+  padding: 0 50px;
+  height: 60px;
+  background-color: #202020;
+  display: flex;
+  z-index: 50;
+}
+main.index section.sub-header > * {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+main.index section.sub-header .filter {
+  width: 200px;
+  position: relative;
+  z-index: 10;
+}
+main.index section.sub-header .filter h2 {
+  margin: 0;
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 1;
+}
+main.index section.sub-header .filter svg {
+  height: 25px;
+  margin-left: auto;
+}
+main.index section.sub-header .filter:hover {
+  cursor: pointer;
+}
+main.index section.sub-header .filter:hover h2, main.index section.sub-header .filter:hover path {
+  stroke: #5B1493;
+  color: #5B1493;
+}
+main.index section.sub-header .filter form {
+  left: 0;
+}
+main.index section.sub-header .add-new-btn {
+  margin-left: auto;
+  color: #BBA5F0;
+  cursor: pointer;
+  position: relative;
+}
+main.index section.sub-header .add-new-btn .add-new > path, main.index section.sub-header .add-new-btn h3 {
+  transition: ease-in-out 0.2s;
+}
+main.index section.sub-header .add-new-btn .add-new {
+  width: 32px;
+}
+main.index section.sub-header .add-new-btn .add-new path {
+  fill: #BBA5F0;
+  fill-opacity: 1;
+  fill-rule: evenodd;
+}
+main.index section.sub-header .add-new-btn h3 {
+  font-weight: 500;
+  margin: 0 10px;
+}
+main.index section.sub-header .add-new-btn:hover h3 {
+  color: #5B1493;
+}
+main.index section.sub-header .add-new-btn:hover .add-new path {
+  fill: #5B1493;
+}
+main.index section.sub-header > * .dropdown {
+  display: none;
+  z-index: 50;
+}
+main.index section.sub-header > * .dropdown p {
+  cursor: pointer;
+  position: relative;
+  width: 100%;
+  transition: ease-in-out 0.2s;
+  white-space: nowrap;
+  font-weight: 500;
+}
+main.index section.sub-header > * .dropdown p:hover {
+  color: #5B1493;
+}
+main.index section.sub-header > *.active .dropdown {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #ffffff;
+  padding: 5px 15px;
+  border-radius: 0 0 10px 10px;
+  transition: ease-in-out 0.2s;
+}
+main.index section.sub-header > *.active .dropdown > * {
+  position: relative;
+}
+main.index section.sub-header > *.active .dropdown > *:after {
+  width: 0;
+  height: 2px;
+  background-color: #5B1493;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transition: ease-in-out 0.2s;
+}
+main.index section.sub-header > *.active .dropdown > *:hover:after {
+  width: 100%;
+}
+main.index table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+}
+main.index table thead tr th {
+  padding-left: 10px;
+}
+main.index table thead tr th#t-track, main.index table thead tr th#t-comment, main.index table thead tr th#t-cat {
+  text-align: left;
+}
+main.index table thead tr th#t-image {
+  width: 5%;
+}
+main.index table thead tr th#t-track {
+  width: 25%;
+}
+main.index table thead tr th#t-comment {
+  width: 45%;
+}
+main.index table thead tr th#t-cat {
+  width: 15%;
+}
+main.index table thead tr th#t-edit {
+  width: 10%;
+}
+main.index table tbody tr:hover {
+  background-color: #00000045;
+}
+main.index table tbody tr td {
+  padding-left: 10px;
+  position: relative;
+}
+main.index table tbody tr td.img, main.index table tbody tr td.edit {
+  text-align: center;
+}
+main.index table tbody tr td.edit {
+  position: relative;
+  z-index: 0;
+  overflow: visible;
+}
+main.index table tbody tr td.edit span {
+  width: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 7px 5px;
+  margin: auto;
+  z-index: 1;
+}
+main.index table tbody tr td.edit span svg {
+  width: 25%;
+}
+main.index table tbody tr td.edit span:hover {
+  cursor: pointer;
+}
+main.index table tbody tr td.edit.active {
+  z-index: 100;
+}
+main.index table tbody tr td.edit.active form {
+  right: 40%;
+  border-radius: 10px;
+  top: calc(100% - 5px);
+}
+main.index table tbody tr td.edit.active form p {
+  margin: 0;
+  margin-bottom: 5px;
+  box-sizing: border-box;
+  padding: 5px 10px;
+}
+main.index table tbody tr td.edit.active form p input {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+main.index table tr {
+  border-bottom: solid 1px #BBA5F0;
+}
+main.index table tr th, main.index table tr td {
+  height: 30px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+main.index table tr th:not(:first-of-type), main.index table tr td:not(:first-of-type) {
+  border-left: solid 1px #BBA5F0;
+}
+
+/*# sourceMappingURL=styles.css.map */
